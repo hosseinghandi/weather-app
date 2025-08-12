@@ -1,0 +1,170 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>This is a weather app</title>
+</head>
+<body>
+    <!-- background video -->
+    <video autoplay muted loop id="backVideo">
+        <source 
+        src="videos/rainy/rainy-m.mp4" 
+        type="video/mp4">
+    </video>
+    
+    <header class="global-padding">
+        <div class="logo-wrapper">
+            <span class="app-name">Breeze</span>
+            <img 
+            class="logo-icon"
+            src="icons/logo/logo-black.png" 
+            alt="a logo includes of sun, cloudes and rain" />
+        </div>
+    </header>
+    
+    <main>
+        <section class="baner-wrapper global-padding"> 
+            <div class="location-wrapper">
+                <img 
+                class="loc-icon-s"
+                src="icons/detailed/loc-b.png" 
+                alt=" a location icon">
+                <span   class="location" 
+                        id="location">Zürich</span>
+            </div>
+
+            <div class="temp-wrapper">
+                <h1>22<span class="degree">°</span></h1>
+            </div>
+
+            <div class="feelslik-wrapper">
+                <img 
+                    class="termo-icon"
+                    src="icons/detailed/tehrmo-b.png" 
+                    alt=" a termometer icon">
+
+                <p class="feelslike">
+                    Feels Like<span id="feelslik_temp">23°</span>
+                </p>
+            </div>
+
+            <div class="temp-state-wrapper">
+                <h2 id="general-temp-state">Semi- Cloudy </h2>
+                <h3 id="detailed-temp-state">intense weather conditions</h3>
+            </div>
+        </section>
+
+        <section class="details global-padding ">
+            <div class="details-list border mod-round">
+                <div class="detail-wrapper">
+                    <img    
+                    class="uv-icon"
+                    src="icons/detailed/uv-b.png" 
+                    alt="an icon of sun">
+                    <p>UV Index:
+                        <span id="uv-index">3</span>
+                    </p>
+                </div>
+
+                <div class="detail-wrapper">
+                    <img    
+                    class="wind-icon"
+                    src="icons/detailed/wind-b.png" 
+                    alt="an icon of wind blowing ">
+                    <p>Wind:
+                        <span id="wind">3</span>
+                    </p>
+                </div>
+                
+                <div class="detail-wrapper">
+                    <img    
+                    class="drops-icon"
+                    src="icons/detailed/drops-b.png" 
+                    alt="an icon of dropping water">
+                    <p>Humidity:
+                        <span id="humidity">56%</span>
+                    </p>
+                </div>
+                
+                <div class="detail-wrapper">
+                    <img    
+                    class="view-icon"
+                    src="icons/detailed/view-b.png" 
+                    alt="an icon of an eye">
+                    <p>Visibility:
+                        <span id="visibility">12 km</span>
+                    </p>
+                </div>
+                
+                <div class="detail-wrapper">
+                    <img    
+                    class="pressure-icon"
+                    src="icons/detailed/pressure-b.png" 
+                    alt="an icon of an pressure gauge">
+                    <p>Pressure:
+                        <span id="pressure">1008 hPa</span>
+                    </p>
+                </div>
+                
+                <div class="detail-wrapper">
+                    <img    
+                    class="umbrella-icon"
+                    src="icons/detailed/umbrella-b.png" 
+                    alt="an icon of an umbrella ">
+                    <p>chance of rain:
+                        <span id="pressure">80%</span>
+                    </p>
+                </div>
+            </div>
+            </section>
+
+            <section class="sunpath global-padding">
+                <div class="border mod-round">
+                    <div class="sunpath-wrapper">
+                        <img 
+                                class="sunpath-image"
+                                src="icons/sunrise-shine/4.png" 
+                                alt="a diagram of sun path"/>
+                    </div>
+                    <div class="time-sunpath-wrapper">
+                        <span id="sunrise">6:58 </span>
+                        <span id="sunrise">18:38 </span>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <nav class="bottom-nav global-padding">
+            <div class="border round">
+            <div class="nav-item-wrapper">
+                <ul class="nav-icon-wrapper">
+                    <li class="nav-icon selected" 
+                        id="home-icon">
+                        <img 
+                        class="logo-icon"
+                        src="icons/logo/logo-black.png" 
+                        alt="an icon includes of sun, cloudes and rain" />
+                    </li>
+                    <li class="nav-icon" 
+                        id="search-icon">
+                        <img 
+                        class="search-icon"
+                        src="icons/navigation/search-b.png" 
+                        alt="an icon for search" />
+                    </li>
+                    <li class="nav-icon"
+                        id="map-icon">
+                            <img 
+                            class="map-icon"
+                            src="icons/navigation/map-b.png" 
+                            alt="an icon of map"/>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+</body>
+</html>
