@@ -7,10 +7,13 @@
 </head>
 <body>
     <!-- background video -->
-    <video autoplay muted loop id="backVideo">
+    <video autoplay muted loop playsinline preload="metadata" id="backVideo">
         <source 
-        src="videos/rainy/rainy-m.mp4" 
-        type="video/mp4">
+            loading="lazy"
+            aria-hidden="true"
+            src="videos/Thunderstorm/thunderstrom-t.mp4" 
+            type="video/mp4">
+            
     </video>
     
     <header class="global-padding">
@@ -23,7 +26,55 @@
         </div>
     </header>
     
+    <nav class="bottom-nav global-padding">
+
+        <div class="search-bar border round">
+            <input  id="city-input"
+                    type="text" 
+                    name="searchbar" 
+                    placeholder="Search for a city"/>
+        </div>
+
+        <div class="border round">
+            <div class="nav-item-wrapper">
+                <ul class="nav-icon-wrapper">
+                    
+                    <li class="nav-icon selected" 
+                        id="home-icon">
+                        <a href="#">
+                            <img 
+                                class="logo-icon"
+                                src="icons/logo/logo-black.png" 
+                                alt="an icon includes of sun, cloudes and rain" />
+                        </a>
+                    </li>
+
+                    <li class="nav-icon" 
+                        id="search-icon">
+                        <a href="#">
+                            <img 
+                                class="search-icon"
+                                src="icons/navigation/search-b.png" 
+                                alt="an icon for search" />
+                        </a>
+                    </li>
+
+                    <li class="nav-icon"
+                        id="map-icon">
+                        <a href="#">
+                            <img 
+                                class="map-icon"
+                                src="icons/navigation/map-b.png" 
+                                alt="an icon of map"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <main>
+
         <section class="baner-wrapper global-padding"> 
             <div class="location-wrapper">
                 <img 
@@ -45,7 +96,7 @@
                     alt=" a termometer icon">
 
                 <p class="feelslike">
-                    Feels Like<span id="feelslik_temp">23°</span>
+                    Feels Like:<span id="feelslik_temp">23°</span>
                 </p>
             </div>
 
@@ -55,116 +106,262 @@
             </div>
         </section>
 
+        <section class="daily-weather global-padding">
+            <div class="border mod-round">
+                <span class="section-title">Hourly weather forecast</span>
+                <div class="daily-weather-list">
+                <div class="monday-wrapper-w hidden">
+                    <p><strong>Mon</strong></p>
+                    <p><span id="monday-temp" class="temp-small">29</span>°</p>
+                    <img    
+                    id="monday-weather-icon"
+                    src="icons/weather-cond/cloudy-sunny-2.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="tuesday-wrapper-w">
+                    <p>Tue</p>
+                    <p><span id="tuesday-temp" class="temp-small">29°</span></p>
+                    <img    
+                    id="tuesday-weather-icon"
+                    src="icons/weather-cond/cloudy-sunny-2.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="wednesday-wrapper-w">
+                    <p>Wed</p>
+                    <p><span id="wednesday-temp" class="temp-small">30</span>°</p>
+                    <img    
+                    id="wednesday-weather-icon"
+                    src="icons/weather-cond/cloudy.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="thursday-wrapper-w">
+                    <p>Thu</p>
+                    <p><span id="thursday-temp" class="temp-small">26</span>°</p>
+                    <img    
+                    id="thursday-weather-icon"
+                    src="icons/weather-cond/rainy.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="friday-wrapper-w">
+                    <p>Fri</p>
+                    <p><span id="friday-temp" class="temp-small">28</span>°</p>
+                    <img    
+                    id="friday-weather-icon"
+                    src="icons/weather-cond/thunder-rainy.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="saturday-wrapper-w">
+                    <p>Sat</p>
+                    <p><span id="saturday-temp" class="temp-small">27</span>°</p>
+                    <img    
+                    id="saturday-weather-icon"
+                    src="icons/weather-cond/cloudy-sunny.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="sunday-wrapper-w">
+                    <p>Sun</p>
+                    <p><span id="sunday-temp" class="temp-small">29</span>°</p>
+                    <img    
+                    id="sunday-weather-icon"
+                    src="icons/weather-cond/cloudy-rainy-sunny.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+            </div>
+            </div>
+        </section>
+
         <section class="details global-padding ">
-            <div class="details-list border mod-round">
-                <div class="detail-wrapper">
-                    <img    
-                    class="uv-icon"
-                    src="icons/detailed/uv-b.png" 
-                    alt="an icon of sun">
-                    <p>UV Index:
-                        <span id="uv-index">3</span>
-                    </p>
+            <div class="details-list">
+                <div class="detail-wrapper border mod-round uv">
+                    <div class="detail-title">
+                        <img    
+                        class="uv-icon"
+                        src="icons/detailed/uv-b.png" 
+                        alt="an icon of sun">
+                        <p>UV Index
+                        </p>
+                    </div>
+                    <span id="uv-index"><strong class="detail-value">2</strong></span>
                 </div>
 
-                <div class="detail-wrapper">
-                    <img    
-                    class="wind-icon"
-                    src="icons/detailed/wind-b.png" 
-                    alt="an icon of wind blowing ">
-                    <p>Wind:
-                        <span id="wind">3</span>
-                    </p>
+                <div class="detail-wrapper border mod-round wind">
+                    <div class="detail-title">
+                        <img    
+                        class="wind-icon"
+                        src="icons/detailed/wind-b.png" 
+                        alt="an icon of wind blowing ">
+                        <p>Wind velocity</p>
+                    </div>
+                    <span id="wind"><strong class="detail-value">3</strong> m/s</span>
                 </div>
                 
-                <div class="detail-wrapper">
-                    <img    
-                    class="drops-icon"
-                    src="icons/detailed/drops-b.png" 
-                    alt="an icon of dropping water">
-                    <p>Humidity:
-                        <span id="humidity">56%</span>
-                    </p>
+                <div class="detail-wrapper border mod-round humidity">
+                    <div class="detail-title">
+                        <img    
+                        class="drops-icon"
+                        src="icons/detailed/drops-b.png" 
+                        alt="an icon of dropping water">
+                        <p>Humidity</p>
+                    </div>
+                    <span id="humidity"><strong class="detail-value">56</strong> %</span>
                 </div>
                 
-                <div class="detail-wrapper">
-                    <img    
-                    class="view-icon"
-                    src="icons/detailed/view-b.png" 
-                    alt="an icon of an eye">
-                    <p>Visibility:
-                        <span id="visibility">12 km</span>
-                    </p>
+                <div class="detail-wrapper border mod-round view">
+                    <div class="detail-title">
+                        <img    
+                        class="view-icon"
+                        src="icons/detailed/view-b.png" 
+                        alt="an icon of an eye">
+                        <p>Visibility</p>
+                    </div>
+                    <span id="visibility"><strong class="detail-value">12</strong> km</span>
                 </div>
                 
-                <div class="detail-wrapper">
-                    <img    
-                    class="pressure-icon"
-                    src="icons/detailed/pressure-b.png" 
-                    alt="an icon of an pressure gauge">
-                    <p>Pressure:
-                        <span id="pressure">1008 hPa</span>
-                    </p>
+                <div class="detail-wrapper border mod-round pressure">
+                    <div class="detail-title">
+                        <img    
+                        class="pressure-icon"
+                        src="icons/detailed/pressure-b.png" 
+                        alt="an icon of an pressure gauge">
+                        <p>Pressure</p>
+                    </div>
+                    <span id="pressure"><strong class="detail-value">1008</strong> hPa</span>
                 </div>
                 
-                <div class="detail-wrapper">
-                    <img    
-                    class="umbrella-icon"
-                    src="icons/detailed/umbrella-b.png" 
-                    alt="an icon of an umbrella ">
-                    <p>chance of rain:
-                        <span id="pressure">80%</span>
-                    </p>
+                <div class="detail-wrapper border mod-round umbrella">
+                    <div class="detail-title">
+                        <img    
+                        class="umbrella-icon"
+                        src="icons/detailed/umbrella-b.png" 
+                        alt="an icon of an umbrella ">
+                        <p>Chance of rain</p>
+                    </div>
+                    <span id="rain-chance"><strong class="detail-value">80</strong> %</span>
                 </div>
             </div>
-            </section>
 
-            <section class="sunpath global-padding">
-                <div class="border mod-round">
-                    <div class="sunpath-wrapper">
-                        <img 
-                                class="sunpath-image"
-                                src="icons/sunrise-shine/4.png" 
-                                alt="a diagram of sun path"/>
-                    </div>
-                    <div class="time-sunpath-wrapper">
-                        <span id="sunrise">6:58 </span>
-                        <span id="sunrise">18:38 </span>
-                    </div>
+            <div class="detail-wrapper border mod-round sunpath">
+                <div class="sunpath-wrapper">
+                    <span class="section-title">Sun path</span>
+                    <img 
+                            class="sunpath-image"
+                            src="icons/sunrise-shine/4.png" 
+                            alt="a diagram of sun path"/>
                 </div>
-            </section>
-        </main>
-        
-        <nav class="bottom-nav global-padding">
-            <div class="border round">
-            <div class="nav-item-wrapper">
-                <ul class="nav-icon-wrapper">
-                    <li class="nav-icon selected" 
-                        id="home-icon">
-                        <img 
-                        class="logo-icon"
-                        src="icons/logo/logo-black.png" 
-                        alt="an icon includes of sun, cloudes and rain" />
-                    </li>
-                    <li class="nav-icon" 
-                        id="search-icon">
-                        <img 
-                        class="search-icon"
-                        src="icons/navigation/search-b.png" 
-                        alt="an icon for search" />
-                    </li>
-                    <li class="nav-icon"
-                        id="map-icon">
-                            <img 
-                            class="map-icon"
-                            src="icons/navigation/map-b.png" 
-                            alt="an icon of map"/>
-                    </li>
-                </ul>
+                <div class="time-sunpath-wrapper">
+                    <span id="sunrise">6:58 </span>
+                    <span id="sunrise">18:38 </span>
+                </div>
             </div>
 
-        </div>
-    </nav>
+        </section>
+
+
+        <section class="weekly-weather global-padding">
+           <div class="border mod-round">
+                <span class="section-title">Weekly weather forecast</span>
+                <div class="weekly-weather-list">
+                <div class="monday-wrapper-w hidden">
+                    <p><strong>Mon</strong></p>
+                    <p><span id="monday-temp" class="temp-small">29</span>°</p>
+                    <img    
+                    id="monday-weather-icon"
+                    src="icons/weather-cond/cloudy-sunny-2.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="tuesday-wrapper-w">
+                    <p>Tue</p>
+                    <p><span id="tuesday-temp" class="temp-small">29°</span></p>
+                    <img    
+                    id="tuesday-weather-icon"
+                    src="icons/weather-cond/cloudy-sunny-2.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="wednesday-wrapper-w">
+                    <p>Wed</p>
+                    <p><span id="wednesday-temp" class="temp-small">30</span>°</p>
+                    <img    
+                    id="wednesday-weather-icon"
+                    src="icons/weather-cond/cloudy.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="thursday-wrapper-w">
+                    <p>Thu</p>
+                    <p><span id="thursday-temp" class="temp-small">26</span>°</p>
+                    <img    
+                    id="thursday-weather-icon"
+                    src="icons/weather-cond/rainy.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="friday-wrapper-w">
+                    <p>Fri</p>
+                    <p><span id="friday-temp" class="temp-small">28</span>°</p>
+                    <img    
+                    id="friday-weather-icon"
+                    src="icons/weather-cond/thunder-rainy.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="saturday-wrapper-w">
+                    <p>Sat</p>
+                    <p><span id="saturday-temp" class="temp-small">27</span>°</p>
+                    <img    
+                    id="saturday-weather-icon"
+                    src="icons/weather-cond/cloudy-sunny.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+
+                <div class="sunday-wrapper-w">
+                    <p>Sun</p>
+                    <p><span id="sunday-temp" class="temp-small">29</span>°</p>
+                    <img    
+                    id="sunday-weather-icon"
+                    src="icons/weather-cond/cloudy-rainy-sunny.png" 
+                    alt="an icon weather condition">
+                    <div class="seperator"></div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section class="map global-padding">
+            <div class="map-wrapper">
+                <img 
+                    loading="lazy"
+                    class="map"
+                    src="/home-banner-map.png" 
+                    alt="a top view map from zurich"
+                    decoding="async">
+            </div>
+        </section>
+
+    </main>
+
+    
 
 </body>
+<script src="index.js" type="module"></script>
 </html>
