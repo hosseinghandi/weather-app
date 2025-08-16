@@ -4,11 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>This is a weather app</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
 </head>
 <body>
     <!-- background video -->
     <video autoplay muted loop playsinline preload="metadata" id="backVideo">
         <source 
+            id="videoSource"
             loading="lazy"
             aria-hidden="true"
             src="videos/Thunderstorm/thunderstrom-t.mp4" 
@@ -73,113 +77,30 @@
         </div>
     </nav>
 
-    <main>
+    <main id="main">
 
         <section class="baner-wrapper global-padding"> 
-            <div class="location-wrapper">
-                <img 
-                class="loc-icon-s"
-                src="icons/detailed/loc-b.png" 
-                alt=" a location icon">
-                <span   class="location" 
-                        id="location">Zürich</span>
+            <div class="location-wrapper" id="location">
+                
             </div>
 
             <div class="temp-wrapper">
-                <h1>22<span class="degree">°</span></h1>
+                <h1 id ="main-temp"></h1>
             </div>
 
-            <div class="feelslik-wrapper">
-                <img 
-                    class="termo-icon"
-                    src="icons/detailed/tehrmo-b.png" 
-                    alt=" a termometer icon">
-
-                <p class="feelslike">
-                    Feels Like:<span id="feelslik_temp">23°</span>
-                </p>
+            <div class="H_L-wrapper">
+                <p id="high-tem"></p>
+                <p id="low-tem"></p>
             </div>
 
             <div class="temp-state-wrapper">
-                <h2 id="general-temp-state">Semi- Cloudy </h2>
-                <h3 id="detailed-temp-state">intense weather conditions</h3>
+                <h2 id="general-temp-state"></h2>
             </div>
         </section>
 
         <section class="daily-weather global-padding">
-            <div class="border mod-round">
+            <div class="border mod-round" id="hourly-weather-wrapper">
                 <span class="section-title">Hourly weather forecast</span>
-                <div class="daily-weather-list">
-                <div class="monday-wrapper-w hidden">
-                    <p><strong>Mon</strong></p>
-                    <p><span id="monday-temp" class="temp-small">29</span>°</p>
-                    <img    
-                    id="monday-weather-icon"
-                    src="icons/weather-cond/cloudy-sunny-2.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-
-                <div class="tuesday-wrapper-w">
-                    <p>Tue</p>
-                    <p><span id="tuesday-temp" class="temp-small">29°</span></p>
-                    <img    
-                    id="tuesday-weather-icon"
-                    src="icons/weather-cond/cloudy-sunny-2.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-
-                <div class="wednesday-wrapper-w">
-                    <p>Wed</p>
-                    <p><span id="wednesday-temp" class="temp-small">30</span>°</p>
-                    <img    
-                    id="wednesday-weather-icon"
-                    src="icons/weather-cond/cloudy.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-
-                <div class="thursday-wrapper-w">
-                    <p>Thu</p>
-                    <p><span id="thursday-temp" class="temp-small">26</span>°</p>
-                    <img    
-                    id="thursday-weather-icon"
-                    src="icons/weather-cond/rainy.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-
-                <div class="friday-wrapper-w">
-                    <p>Fri</p>
-                    <p><span id="friday-temp" class="temp-small">28</span>°</p>
-                    <img    
-                    id="friday-weather-icon"
-                    src="icons/weather-cond/thunder-rainy.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-
-                <div class="saturday-wrapper-w">
-                    <p>Sat</p>
-                    <p><span id="saturday-temp" class="temp-small">27</span>°</p>
-                    <img    
-                    id="saturday-weather-icon"
-                    src="icons/weather-cond/cloudy-sunny.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-
-                <div class="sunday-wrapper-w">
-                    <p>Sun</p>
-                    <p><span id="sunday-temp" class="temp-small">29</span>°</p>
-                    <img    
-                    id="sunday-weather-icon"
-                    src="icons/weather-cond/cloudy-rainy-sunny.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-            </div>
             </div>
         </section>
 
@@ -194,7 +115,10 @@
                         <p>UV Index
                         </p>
                     </div>
-                    <span id="uv-index"><strong class="detail-value">2</strong></span>
+                    <div class="uv-gradient-line-wrapper">
+                    <span id="uv-index"></span>
+                    <div class="gradient-line uv"><span id="uv-indicator"></span></div>
+                    </div>
                 </div>
 
                 <div class="detail-wrapper border mod-round wind">
@@ -203,9 +127,28 @@
                         class="wind-icon"
                         src="icons/detailed/wind-b.png" 
                         alt="an icon of wind blowing ">
-                        <p>Wind velocity</p>
+                        <p>Wind</p>
                     </div>
-                    <span id="wind"><strong class="detail-value">3</strong> m/s</span>
+                    <div class="detail-wrapper-col-wind">
+                        <div class="wind-left-clo">
+                            <span id="wind-velocity"></span>
+                            <span id="wind-gusts"></span>
+                            <span id="wind-direction"></span>
+                        </div>
+                        <div class="ind-right-clo">
+                            <div class="wind-compass">
+                                <img 
+                                class="wind-compass-circle"
+                                src="./wind-direction-rose.png" alt="a wind compass"/>
+                                
+                                <img 
+                                id="wind-compass-arrow"
+                                src="./arrow.png" alt="a wind compass"/>
+                                
+                                <span class="centre-circle"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="detail-wrapper border mod-round humidity">
@@ -216,7 +159,7 @@
                         alt="an icon of dropping water">
                         <p>Humidity</p>
                     </div>
-                    <span id="humidity"><strong class="detail-value">56</strong> %</span>
+                    <span id="humidity"></span>
                 </div>
                 
                 <div class="detail-wrapper border mod-round view">
@@ -227,7 +170,7 @@
                         alt="an icon of an eye">
                         <p>Visibility</p>
                     </div>
-                    <span id="visibility"><strong class="detail-value">12</strong> km</span>
+                    <span id="visibility"></span>
                 </div>
                 
                 <div class="detail-wrapper border mod-round pressure">
@@ -238,7 +181,7 @@
                         alt="an icon of an pressure gauge">
                         <p>Pressure</p>
                     </div>
-                    <span id="pressure"><strong class="detail-value">1008</strong> hPa</span>
+                    <span id="pressure"></span>
                 </div>
                 
                 <div class="detail-wrapper border mod-round umbrella">
@@ -249,21 +192,22 @@
                         alt="an icon of an umbrella ">
                         <p>Chance of rain</p>
                     </div>
-                    <span id="rain-chance"><strong class="detail-value">80</strong> %</span>
+                    <div class="gradient-line rain"><span id="rain-indicator"></span></div>
+                    <span id="rain-chance"></span>
                 </div>
             </div>
 
             <div class="detail-wrapper border mod-round sunpath">
                 <div class="sunpath-wrapper">
                     <span class="section-title">Sun path</span>
-                    <img 
+                    <img    
+                            id="sun-diagram"
                             class="sunpath-image"
-                            src="icons/sunrise-shine/4.png" 
+                            src="" 
                             alt="a diagram of sun path"/>
                 </div>
-                <div class="time-sunpath-wrapper">
-                    <span id="sunrise">6:58 </span>
-                    <span id="sunrise">18:38 </span>
+                <div class="time-sunpath-wrapper" id="sunTime-wrapper">
+                    
                 </div>
             </div>
 
@@ -271,20 +215,41 @@
 
 
         <section class="weekly-weather global-padding">
-           <div class="border mod-round">
+            <div class="border mod-round" id="Weekly-weather-wrapper">
                 <span class="section-title">Weekly weather forecast</span>
-                <div class="weekly-weather-list">
-                <div class="monday-wrapper-w hidden">
-                    <p><strong>Mon</strong></p>
-                    <p><span id="monday-temp" class="temp-small">29</span>°</p>
-                    <img    
-                    id="monday-weather-icon"
-                    src="icons/weather-cond/cloudy-sunny-2.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
+            </div>
+        </section>
 
-                <div class="tuesday-wrapper-w">
+        <section class="map global-padding">
+            <div class="map-wrapper">
+                <div id="map"></div>
+            </div>
+        </section>
+
+    </main>
+
+    
+
+</body>
+<script src="index.js" type="module"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- <div class="tuesday-wrapper-w">
                     <p>Tue</p>
                     <p><span id="tuesday-temp" class="temp-small">29°</span></p>
                     <img    
@@ -342,26 +307,4 @@
                     src="icons/weather-cond/cloudy-rainy-sunny.png" 
                     alt="an icon weather condition">
                     <div class="seperator"></div>
-                </div>
-            </div>
-            </div>
-        </section>
-
-        <section class="map global-padding">
-            <div class="map-wrapper">
-                <img 
-                    loading="lazy"
-                    class="map"
-                    src="/home-banner-map.png" 
-                    alt="a top view map from zurich"
-                    decoding="async">
-            </div>
-        </section>
-
-    </main>
-
-    
-
-</body>
-<script src="index.js" type="module"></script>
-</html>
+                </div> -->
