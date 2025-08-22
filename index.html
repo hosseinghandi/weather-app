@@ -7,81 +7,43 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""/>
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" 
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" />
 </head>
-<body>
+<body class="body-grid">
     <!-- background video -->
-    <video autoplay muted loop playsinline preload="metadata" id="backVideo">
-        <source 
-            id="videoSource"
-            loading="lazy"
-            aria-hidden="true"
-            src="videos/Thunderstorm/thunderstrom-t.mp4" 
-            type="video/mp4">
-            
-    </video>
-    
-    <header class="global-padding">
-        <div class="logo-wrapper">
-            <span class="app-name">Breeze</span>
-            <img 
-            class="logo-icon"
-            src="icons/logo/logo-black.png" 
-            alt="a logo includes of sun, cloudes and rain" />
-        </div>
-    </header>
-    
-    <nav class="bottom-nav global-padding">
+    <div id="video-background-wrapper"> 
+    </div>
+    <div class="top-baner-wrapper">
+        <header class="global-padding">
 
-        <div class="search-bar border round">
-            <input  id="city-input"
-                    type="text" 
-                    name="searchbar" 
-                    placeholder="Search for a city"/>
-        </div>
-
-        <div class="border round">
-            <div class="nav-item-wrapper">
-                <ul class="nav-icon-wrapper">
-                    
-                    <li class="nav-icon selected" 
-                        id="home-icon">
-                        <a href="#">
-                            <img 
-                                class="logo-icon"
-                                src="icons/logo/logo-black.png" 
-                                alt="an icon includes of sun, cloudes and rain" />
-                        </a>
-                    </li>
-
-                    <li class="nav-icon" 
-                        id="search-icon">
-                        <a href="#">
-                            <img 
-                                class="search-icon"
-                                src="icons/navigation/search-b.png" 
-                                alt="an icon for search" />
-                        </a>
-                    </li>
-
-                    <li class="nav-icon"
-                        id="map-icon">
-                        <a href="#">
-                            <img 
-                                class="map-icon"
-                                src="icons/navigation/map-b.png" 
-                                alt="an icon of map"/>
-                        </a>
-                    </li>
-                </ul>
+            <div class="logo-wrapper">
+                <span class="app-name">Breeze</span>
+                <img 
+                class="logo-icon"
+                src="icons/logo/logo-black.png" 
+                alt="a logo includes of sun, cloudes and rain" />
             </div>
-        </div>
-    </nav>
+
+            <nav class="bottom-nav">
+                <div id="searchbox">
+                    <img class="search-icon"
+                    src="icons/navigation/search-b.png" alt=""/>
+                    <input  id="searchInput"
+                            type="text" 
+                            placeholder="search">
+                </div>
+            </nav>
+
+        </header>
+    </div>
 
     <main id="main">
-
         <section class="baner-wrapper global-padding"> 
             <div class="location-wrapper" id="location">
-                
             </div>
 
             <div class="temp-wrapper">
@@ -98,14 +60,18 @@
             </div>
         </section>
 
-        <section class="daily-weather global-padding">
-            <div class="border mod-round" id="hourly-weather-wrapper">
-                <span class="section-title">Hourly weather forecast</span>
-            </div>
+        <section class="details global-padding">
+
+            <div class="details-list">
+                <section class="daily-weather border mod-round">
+                    <div class="title-hourly-section">
+                        <span class="section-title">Hourly forecast</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                <div id="hourly-weather-wrapper">
+                </div>
         </section>
 
-        <section class="details global-padding ">
-            <div class="details-list">
                 <div class="detail-wrapper border mod-round uv">
                     <div class="detail-title">
                         <img    
@@ -192,12 +158,13 @@
                         alt="an icon of an umbrella ">
                         <p>Chance of rain</p>
                     </div>
-                    <div class="gradient-line rain"><span id="rain-indicator"></span></div>
-                    <span id="rain-chance"></span>
+                    <div class="gradient-per">
+                        <div class="gradient-line rain"><span id="rain-indicator"></span></div>
+                        <span id="rain-chance"></span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="detail-wrapper border mod-round sunpath">
+                <div class="detail-wrapper border mod-round sunpath">
                 <div class="sunpath-wrapper">
                     <span class="section-title">Sun path</span>
                     <img    
@@ -210,21 +177,21 @@
                     
                 </div>
             </div>
-
-        </section>
-
-
-        <section class="weekly-weather global-padding">
-            <div class="border mod-round" id="Weekly-weather-wrapper">
-                <span class="section-title">Weekly weather forecast</span>
+            <section class="weekly-weather border mod-round">
+                <span class="section-title">7-day forecast</span>
+                <div  id="Weekly-weather-wrapper">
+                </div>
+            </section>
             </div>
+
+            
         </section>
 
-        <section class="map global-padding">
+        <!-- <section class="map global-padding">
             <div class="map-wrapper">
                 <div id="map"></div>
             </div>
-        </section>
+        </section> -->
 
     </main>
 
@@ -237,74 +204,3 @@
      crossorigin=""></script>
 </html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-                <!-- <div class="tuesday-wrapper-w">
-                    <p>Tue</p>
-                    <p><span id="tuesday-temp" class="temp-small">29°</span></p>
-                    <img    
-                    id="tuesday-weather-icon"
-                    src="icons/weather-cond/cloudy-sunny-2.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-
-                <div class="wednesday-wrapper-w">
-                    <p>Wed</p>
-                    <p><span id="wednesday-temp" class="temp-small">30</span>°</p>
-                    <img    
-                    id="wednesday-weather-icon"
-                    src="icons/weather-cond/cloudy.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-
-                <div class="thursday-wrapper-w">
-                    <p>Thu</p>
-                    <p><span id="thursday-temp" class="temp-small">26</span>°</p>
-                    <img    
-                    id="thursday-weather-icon"
-                    src="icons/weather-cond/rainy.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-
-                <div class="friday-wrapper-w">
-                    <p>Fri</p>
-                    <p><span id="friday-temp" class="temp-small">28</span>°</p>
-                    <img    
-                    id="friday-weather-icon"
-                    src="icons/weather-cond/thunder-rainy.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-
-                <div class="saturday-wrapper-w">
-                    <p>Sat</p>
-                    <p><span id="saturday-temp" class="temp-small">27</span>°</p>
-                    <img    
-                    id="saturday-weather-icon"
-                    src="icons/weather-cond/cloudy-sunny.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div>
-
-                <div class="sunday-wrapper-w">
-                    <p>Sun</p>
-                    <p><span id="sunday-temp" class="temp-small">29</span>°</p>
-                    <img    
-                    id="sunday-weather-icon"
-                    src="icons/weather-cond/cloudy-rainy-sunny.png" 
-                    alt="an icon weather condition">
-                    <div class="seperator"></div>
-                </div> -->
