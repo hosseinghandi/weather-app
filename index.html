@@ -17,56 +17,53 @@
     <!-- background video -->
     <div id="video-background-wrapper"> 
     </div>
-    <div class="top-baner-wrapper">
-        <header class="global-padding">
+    <header class="global-padding">
+        <div class="logo-wrapper">
+            <span class="app-name">Breeze</span>
+            <img 
+            class="logo-icon"
+            src="icons/logo/logo-black.png" 
+            alt="a logo includes of sun, cloudes and rain" />
+        </div>
 
-            <div class="logo-wrapper">
-                <span class="app-name">Breeze</span>
-                <img 
-                class="logo-icon"
-                src="icons/logo/logo-black.png" 
-                alt="a logo includes of sun, cloudes and rain" />
-            </div>
+        <nav id="searchbox">
+                <img class="search-icon"
+                src="icons/navigation/search-b.png" alt=""/>
+                <input  id="searchInput"
+                        type="text" 
+                        placeholder="search">
+        </nav>
 
-            <nav class="bottom-nav">
-                <div id="searchbox">
-                    <img class="search-icon"
-                    src="icons/navigation/search-b.png" alt=""/>
-                    <input  id="searchInput"
-                            type="text" 
-                            placeholder="search">
-                </div>
-            </nav>
-
-        </header>
-    </div>
+    </header>
 
     <main id="main">
-        <section class="baner-wrapper global-padding"> 
-            <div class="location-wrapper" id="location">
-            </div>
-
-            <div class="temp-wrapper">
-                <h1 id ="main-temp"></h1>
-            </div>
-
-            <div class="H_L-wrapper">
-                <p id="high-tem"></p>
-                <p id="low-tem"></p>
-            </div>
-
-            <div class="temp-state-wrapper">
-                <h2 id="general-temp-state"></h2>
-            </div>
-        </section>
-
+        
         <section class="details global-padding">
-
+            
             <div class="details-list">
+                
+                <section class="baner-wrapper global-padding"> 
+                    <div class="location-wrapper" id="location">
+                    </div>
+    
+                    <div class="temp-wrapper">
+                        <h1 id ="main-temp"></h1>
+                    </div>
+    
+                    <div class="H_L-wrapper">
+                        <p id="high-tem"></p>
+                        <p id="low-tem"></p>
+                    </div>
+    
+                    <div class="temp-state-wrapper">
+                        <h2 id="general-temp-state"></h2>
+                    </div>
+                </section>
+
                 <section class="daily-weather border mod-round">
                     <div class="title-hourly-section">
                         <span class="section-title">Hourly forecast</span>
-                        <i class="fa-solid fa-arrow-right"></i>
+                        <i class="fa-solid fa-arrow-right" id="scroll-fading-hourly"></i>
                     </div>
                 <div id="hourly-weather-wrapper">
                 </div>
@@ -150,13 +147,13 @@
                     <span id="pressure"></span>
                 </div>
                 
-                <div class="detail-wrapper border mod-round umbrella">
-                    <div class="detail-title">
+                <div class="detail-wrapper border mod-round umbrella_wrapper">
+                    <div class="detail-title umbrella">
                         <img    
                         class="umbrella-icon"
                         src="icons/detailed/umbrella-b.png" 
                         alt="an icon of an umbrella ">
-                        <p>Chance of rain</p>
+                        <p>Rain chance</p>
                     </div>
                     <div class="gradient-per">
                         <div class="gradient-line rain"><span id="rain-indicator"></span></div>
@@ -178,7 +175,10 @@
                 </div>
             </div>
             <section class="weekly-weather border mod-round">
-                <span class="section-title">7-day forecast</span>
+                <div class="title-weekly-section">
+                        <span class="section-title">7-day forecast</span>
+                        <i class="fa-solid fa-arrow-right" id="scroll-fading-weekly"></i>
+                    </div>
                 <div  id="Weekly-weather-wrapper">
                 </div>
             </section>

@@ -238,13 +238,13 @@ function renderDataProvision() {
 
     mainTempEl.innerHTML = `${(current.apparent_temperature).toFixed(0)}<span class="degree">°</span>`                    
     highTempEl.innerHTML = `H:<span id="feelslike_temp">${(daily.temperature_2m_max[0].toFixed(0))}°</span>`
-    lowTempEl.innerHTML = `H:<span id="feelslike_temp">${(daily.temperature_2m_min[0].toFixed(0))}°</span>`
+    lowTempEl.innerHTML = `L:<span id="feelslike_temp">${(daily.temperature_2m_min[0].toFixed(0))}°</span>`
     generalWeatherState.innerText = weathercodeOfcurrentTimedesc
     dailyWeatherList.innerHTML = hourlyWeatherRender(hourly)
 
 
     uvIndexEl.innerHTML = `<strong class="detail-value">${daily.uv_index_max[0]}</strong>`
-    uvIndicator.style.left = daily.uv_index_max[0]*10
+    uvIndicator.style.left = daily.uv_index_max[0]*10 
 
     humidity.innerHTML = `<strong class="detail-value">${daily.relative_humidity_2m_mean[0]}%</strong>`
     
@@ -269,14 +269,14 @@ function windRender() {
     windArrow.style.setProperty("--angle",`${current.wind_direction_10m}deg`)   
     windVelocity.innerHTML = 
     ` <div class="wind-flex">
-        <span>Wind</span>
-        <span>${current.wind_speed_10m}</span>
+        <span class="detail-title">Wind</span>
+        <span><strong class="detail-value">${current.wind_speed_10m}</strong></span>
     </div>
     `
     windGusts.innerHTML = 
     ` <div class="wind-flex">
-        <span>Gusts</span>
-        <span>${current.wind_gusts_10m}</span>
+        <span class="detail-title">Gusts</span>
+        <span><strong class="detail-value">${current.wind_gusts_10m}</strong></span>
     </div>
     `
 
@@ -291,10 +291,13 @@ function windRender() {
 
     windDirection.innerHTML = 
     ` <div class="wind-flex">
-        <span>Direction:</span>
-        <span>${
-            compass.points[compass.fromDegreetoPoint(current.wind_direction_10m)]
-            }</span>
+        <span class="detail-title">Direction</span>
+        <span>
+        <strong class="detail-value">${
+            current.wind_direction_10m + "°" +
+            " " +compass.points[compass.fromDegreetoPoint(current.wind_direction_10m)]
+            }</strong>
+            </span>
     </div>
     `
 }
@@ -327,7 +330,7 @@ function sunRiseShine() {
 
 
 function hourlyWeatherRender(hourly) {
-    const take24hValues = data => { return data.slice(exactTime.time,exactTime.time + 25)}
+    const take24hValues = data => { return data.slice(exactTime.time,exactTime.time + 24)}
     
 
     const tempDatatime =  take24hValues(hourly.time)
